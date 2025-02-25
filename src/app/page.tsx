@@ -8,10 +8,10 @@ import {
   useAdvancedMarkerRef,
   useMap,
 } from "@vis.gl/react-google-maps";
-// import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 // import { resultList } from "./controllers/controllers";
 import React from "react";
-// import { headlessEngine } from "./system/engine";
+import { headlessEngine } from "./system/engine";
 // import AdvancedMarkerInfoWindow from "./map/marker-info-window";
 import DiscGolfMap from "./map/google-map";
 
@@ -26,9 +26,9 @@ export default function App() {
   // const [results, setResults] = useState(resultList.state);
   // // const [currentResult, setCurrentResult] = useState(null);
 
-  // useEffect(() => {
-  //   headlessEngine.executeFirstSearch();
-  // }, []);
+  useEffect(() => {
+    headlessEngine.executeFirstSearch();
+  }, []);
 
   // useEffect(
   //   () => resultList.subscribe(() => setResults(resultList.state)),

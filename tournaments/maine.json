@@ -1,0 +1,63 @@
+{ 
+    "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+    "title": "Daylight Saving Doubles 10" ,
+    "clickableuri" : "https://www.discgolfscene.com/tournaments/Daylight_Saving_Doubles_IX_2025",
+    "coordinatesz32xlatitude" : "44.100731",
+    "coordinatesz32xlongitude" : "-70.214958",
+    "date": "03/9/2025 12:00:00.000"
+}
+
+{ 
+    "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+    "title": "Jokers Wild Doubles 2025" ,
+    "clickableuri" : "https://www.discgolfscene.com/tournaments/Jokers_Wild_Doubles_2025",
+    "coordinatesz32xlatitude" : "44.093789",
+    "coordinatesz32xlongitude" : "-70.231131",
+    "date": "03/30/2025 12:00:00.000"
+    },
+
+    { 
+        "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+        "title": "Mast Landing's Frost Heave Open 2025" ,
+        "clickableuri" : "https://www.discgolfscene.com/tournaments/Mast_Landing_Brewing_Co_Presents_the_Frost_Heave_Open_2_2025",
+        "coordinatesz32xlatitude" : "43.851109",
+        "coordinatesz32xlongitude" : "-70.236061",
+        "date": "04/26/2025 12:00:00.000"
+        }
+
+        { 
+            "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+            "title": "Berg Challenge" ,
+            "clickableuri" : "https://www.discgolfscene.com/tournaments/Berg_Challenge_2025",
+            "coordinatesz32xlatitude" : "43.690720",
+            "coordinatesz32xlongitude" : "-70.792908",
+            "date": "05/10/2025 12:00:00.000"
+            }
+
+
+            { 
+    "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+    "title": "ME25 DDGA Deaf National Championship presented by" ,
+    "clickableuri" : "https://www.discgolfscene.com/tournaments/ME25_DDGA_Deaf_National_Championship_presented_by_2025",
+    "coordinatesz32xlatitude" : "43.96345535326048",
+    "coordinatesz32xlongitude" : "-70.28136068754063",
+    "date": "07/19/2025 12:00:00.000"
+    }
+
+    { 
+        "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+        "title": "Spring Shot Doubles 2" ,
+        "clickableuri" : "https://www.discgolfscene.com/tournaments/Spring_Shot_Doubles_2_2025",
+        "coordinatesz32xlatitude" : "43.3056877",
+        "coordinatesz32xlongitude" : "-70.7358208",
+        "date": "04/26/2025 12:00:00.000"
+        }
+
+        { 
+            "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>",
+            "title": "Putting for pets" ,
+            "clickableuri" : "https://www.discgolfscene.com/tournaments/Putting_for_pets_2025",
+            "coordinatesz32xlatitude" : "44.5881147",
+            "coordinatesz32xlongitude" : "-69.5993641",
+            "date": "05/04/2025 12:00:00.000"
+            }
