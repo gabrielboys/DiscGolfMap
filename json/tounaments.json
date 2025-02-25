@@ -1,0 +1,10 @@
+{
+  "addOrUpdate": [
+    {
+      "title": "GABE TEST12",
+      "coordinatesz32xlongitude": "1234",
+      "documentId": "http://d4212gdddumfdmyItem.html",
+      "data": "<html><body><h1>Dummy item</h1><p>This is dummy raw textual item data</p></body></html>"
+    }
+  ]
+}
