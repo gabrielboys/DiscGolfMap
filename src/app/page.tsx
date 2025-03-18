@@ -13,7 +13,7 @@ import { useCallback, useEffect, useState } from "react";
 import React from "react";
 import { headlessEngine } from "./system/engine";
 // import AdvancedMarkerInfoWindow from "./map/marker-info-window";
-import DiscGolfMap from "./map/google-map";
+import DiscGolfMap from "./map/disc-golf-map";
 
 export default function App() {
   // const theMap = useMap("test-map");

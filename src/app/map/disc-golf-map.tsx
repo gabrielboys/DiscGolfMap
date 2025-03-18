@@ -15,6 +15,9 @@ import { resultList } from "../controllers/controllers";
 import React from "react";
 import { headlessEngine } from "../system/engine";
 import { AdvancedMarkerInfoWindow } from "./marker-info-window";
+import { getMapRadius } from "../system/get-map-radius";
+import { executeLocationQuery } from "../system/query";
+import { Circle } from "../system/debug-circle";
 //import AdvancedMarkerInfoWindow from "./marker-info-window";
 
 export default function DiscGolfMap() {
@@ -23,69 +26,40 @@ export default function DiscGolfMap() {
   const places = useMapsLibrary("places");
   const geometry = useMapsLibrary("geometry");
 
-  //Maps
-  // const [markerRef, marker] = useAdvancedMarkerRef();
-  //const [infoWindowShown, setInfoWindowShown] = useState(false);
-
-  //Coveo
+  // Coveo
   const [results, setResults] = useState(resultList.state);
-  //const [currentResult, setCurrentResult] = useState(null);
+  const [searchArea, setSearchArea] = useState({
+    lat: 0,
+    lng: 0,
+    radius: 0,
+  });
 
   useEffect(
     () => resultList.subscribe(() => setResults(resultList.state)),
     [resultList]
   );
 
-  //   useEffect(() => {
-  //     console.log(map);
-  //   }, [map]);
-
-  //   const fitMapToToMarkers = useCallback(() => {
-  //     if (!map) return;
-
-  //     console.log(map);
-
-  //     // const bounds = new google.maps.LatLngBounds();
-  //     // for (const latLng of markerLocations) {
-  //     //   bounds.extend(latLng);
-  //     // }
-  //     // map.fitBounds(bounds);
-  //   }, [map]);
-
-  // const handleMarkerClick = useCallback(() => {
-  //   setInfoWindowShown((isShown) => !isShown);
-
-  //   setCurrentResult;
-  // }, []);
-  //  const handleClose = useCallback(() => setInfoWindowShown(false), []);
-
-  //const centerDefault = { lat: 44.305719, lng: -68.616381 };
-
-  //   function handleMarkerClick(result): void {
-  //     //console.log(JSON.stringify(markerRef));
-  //     setInfoWindowShown((isShown) => !isShown);
-  //     setCurrentResult(result);
-  //   }
-
-  //   function handleClose(): void {
-  //     setInfoWindowShown(false);
-  //     setCurrentResult(null);
-  //   }
-
-  function doSearch(): void {
-    console.log("SEARCH TERM:");
-    //   console.log(searchTerm);
-  }
-
   const handleMapChanged = () => {
+    if (theMap === null) {
+      return;
+    }
+
     //let bounds = theMap?.getBounds();
     const center = theMap?.getCenter();
-    const zoom = theMap?.getZoom();
+    //  const zoom = theMap?.getZoom();
 
-    const lat = center.lat();
-    const lng = center.lng();
+    const lat = center?.lat();
+    const lng = center?.lng();
 
-    console.log(lat);
+    const radius = getMapRadius(theMap);
+
+    setSearchArea({
+      lat: lat,
+      lng: lng,
+      radius: radius,
+    });
+
+    executeLocationQuery(lat.toString(), lng.toString(), radius.toString());
 
     //This logic will update the location query using the map itself,
     // this would change if the size of the window changed which is not what we want.
@@ -115,23 +89,16 @@ export default function DiscGolfMap() {
     // mapLocationController.updateMapSettings(newMapSettings, true);
   };
 
+  const showRadiusOverlay = localStorage.getItem("showMapOverlay") != null;
+
   return (
     <>
-      {" "}
       {!apiIsLoaded ? (
         <div>Loading...</div>
       ) : (
         <div>
           Result Count: {results.results.length}
-          {/* <APIProvider apiKey={"AIzaSyCGr1A2dZsdTgsOJuRaQbTYM0_cV94OU6E"}> */}
           <div>
-            {/* <Button onClick={() => doSearch()}>Do Search</Button>
-        Start Date: <DatePickerDemo />
-        End Date: <DatePickerDemo /> */}
-            {/* <Input
-          placeholder="Enter Zip Code…"
-          onChange={(event) => setSearchTerm(event.target.value)}
-        /> */}
             <Map
               id="test-map"
               style={{ height: "100vh", width: "100%" }}
@@ -139,6 +106,7 @@ export default function DiscGolfMap() {
               defaultZoom={15}
               mapId="784793411afbb0ce"
               onDragend={() => handleMapChanged()}
+              onZoomChanged={() => handleMapChanged()}
             >
               {results.results.map((result) => (
                 <AdvancedMarkerInfoWindow
@@ -146,6 +114,17 @@ export default function DiscGolfMap() {
                   result={result}
                 />
               ))}
+
+              {showRadiusOverlay && (
+                <Circle
+                  center={{
+                    lat: searchArea.lat,
+                    lng: searchArea.lng,
+                  }}
+                  radius={searchArea.radius}
+                  fillColor="blue"
+                />
+              )}
             </Map>
           </div>
           {/* </APIProvider> */}

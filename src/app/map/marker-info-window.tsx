@@ -23,9 +23,17 @@ export const AdvancedMarkerInfoWindow: FunctionComponent<
     console.log(JSON.stringify(result));
   }, []);
 
+  const pinStyle = {
+    opacity: 0.3,
+    boxShadow: "none",
+    outline: "none",
+    color: "#1e23aa",
+  };
+
   return (
     <>
       <AdvancedMarker
+        style={pinStyle}
         ref={markerRef}
         position={{
           lat: result.raw["coordinatesz32xlatitude"] as any,
@@ -35,6 +43,7 @@ export const AdvancedMarkerInfoWindow: FunctionComponent<
         title={result.title}
         onMouseEnter={() => setInfowindowOpen(true)}
         onMouseLeave={() => setInfowindowOpen(false)}
+        onClick={() => window.open(result.clickUri, "_blank")}
       ></AdvancedMarker>
       {infowindowOpen && (
         <InfoWindow

@@ -1,4 +1,8 @@
-import { buildSearchEngine, loadFieldActions } from "@coveo/headless";
+import {
+  buildResultsPerPage,
+  buildSearchEngine,
+  loadFieldActions,
+} from "@coveo/headless";
 
 //Setup basic config for the search engine
 const headlessEngine = buildSearchEngine({
@@ -8,9 +12,6 @@ const headlessEngine = buildSearchEngine({
     accessToken: "xxd29876c8-2cfb-4ec8-a45d-5f13dc767e7f",
     search: {
       pipeline: "Gabe Test Pipeline",
-    },
-    analytics: {
-      analyticsMode: "legacy",
     },
   },
 });
@@ -26,5 +27,9 @@ headlessEngine.dispatch(
     "permanentid",
   ])
 );
+
+buildResultsPerPage(headlessEngine, {
+  initialState: { numberOfResults: 100 },
+});
 
 export { headlessEngine };
